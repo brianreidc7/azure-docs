@@ -82,12 +82,12 @@ By default, the browser automatically calculates the right zone (Internet or Int
 2. Edit the Group Policy that is applied to some or all your users. In this example, we use the **Default Domain Policy**.
 3. Navigate to **User Configuration\Administrative Templates\Windows Components\Internet Explorer\Internet Control Panel\Security Page** and select **Site to Zone Assignment List**.
 ![Single sign-on](./media/active-directory-aadconnect-sso/sso6.png)  
-4. Enable the policy, and enter the following values (Azure AD URLs where Kerberos tickets are forwarded) and data (*1* indicates Intranet zone) in the dialog box.
+4. Enable the policy, and enter the Azure AD URLs where Kerberos tickets are forwarded (see above) under the Value name column and 1 in the Value column (*1* indicates Intranet zone) in the dialog box.
 
-		Value: https://autologon.microsoftazuread-sso.com
-		Data: 1
-		Value: https://aadg.windows.net.nsatc.net
-		Data: 1
+		Value Name: https://autologon.microsoftazuread-sso.com
+		Value: 1
+		Value Name: https://aadg.windows.net.nsatc.net
+		Value: 1
 >[!NOTE]
 > If you want to disallow some users from using Seamless SSO - for instance, if these users are signing in on shared kiosks - set the preceding values to *4*. This action adds the Azure AD URLs to the Restricted Zone, and fails Seamless SSO all the time.
 
