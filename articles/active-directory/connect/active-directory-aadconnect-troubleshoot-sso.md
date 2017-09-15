@@ -67,10 +67,11 @@ Use the following checklist to troubleshoot Seamless SSO issues:
 - Ensure that the user's account is from an AD forest where Seamless SSO has been set up.
 - Ensure the device is connected on the corporate network.
 - Ensure that the device's time is synchronized with the Active Directory's and the Domain Controllers' time and is within five minutes of each other.
-- List existing Kerberos tickets on the device using the **klist** command from a command prompt. Check if tickets issued for the `AZUREADSSOACCT` computer account are present. Users' Kerberos tickets are typically valid for 12 hours. You may have  different settings in your Active Directory.
+- List existing Kerberos tickets on the device using the **klist** command from a command prompt. Check if tickets issued for the `AZUREADSSOACC` computer account are present. Users' Kerberos tickets are typically valid for 12 hours. You may have  different settings in your Active Directory.
 - Purge existing Kerberos tickets from the device using the **klist purge** command, and try again.
 - To determine if there are JavaScript-related issues, review the console logs of the browser (under "Developer Tools").
 - Review the [Domain Controller logs](#domain-controller-logs) as well.
+- Ensure that the computer account called AZUREADSSOACC in the Active Directory is not disabled or deleted
 
 ### Domain Controller logs
 
@@ -103,7 +104,7 @@ If troubleshooting didn't help, you can manually reset the feature on your tenan
 ### Step 3: Disable Seamless SSO for each AD forest that it was set it up on
 
 1. Call `$creds = Get-Credential`. When prompted, enter the Domain Administrator credentials for the intended AD forest.
-2. Call `Disable-AzureADSSOForest -OnPremCredentials $creds`. This command removes the `AZUREADSSOACCT` computer account from the on-premises Domain Controller for this specific AD forest.
+2. Call `Disable-AzureADSSOForest -OnPremCredentials $creds`. This command removes the `AZUREADSSOACC` computer account from the on-premises Domain Controller for this specific AD forest.
 3. Repeat the preceding steps for each AD forest that you’ve set up the feature on.
 
 ### Step 4: Enable Seamless SSO for each AD forest
