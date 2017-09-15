@@ -32,15 +32,15 @@ This section has two parts to it:
 ### How does set up work?
 
 Seamless SSO is enabled using Azure AD Connect as shown [here](active-directory-aadconnect-sso-quick-start.md). While enabling the feature, the following steps occur:
-- A computer account named `AZUREADSSOACCT` (which represents Azure AD) is created in your on-premises Active Directory (AD).
+- A computer account named `AZUREADSSOACC` (which represents Azure AD) is created in your on-premises Active Directory (AD).
 - The computer account's Kerberos decryption key is shared securely with Azure AD.
 - In addition, two Kerberos service principal names (SPNs) are created to represent two URLs that are used during Azure AD sign-in.
 
 >[!NOTE]
-> The computer account and the Kerberos SPNs are created in each AD forest you synchronize to Azure AD (using Azure AD Connect) and for whose users you want Seamless SSO. Move the `AZUREADSSOACCT` computer account to an Organization Unit (OU) where other computer accounts are stored to ensure that it is managed in the same way and is not deleted.
+> The computer account and the Kerberos SPNs are created in each AD forest you synchronize to Azure AD (using Azure AD Connect) and for whose users you want Seamless SSO. Move the `AZUREADSSOACC` computer account to an Organization Unit (OU) where other computer accounts are stored to ensure that it is managed in the same way and is not deleted.
 
 >[!IMPORTANT]
->We highly recommend that you [roll over the Kerberos decryption key](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacct-computer-account) of the `AZUREADSSOACCT` computer account at least every 30 days.
+>We highly recommend that you [roll over the Kerberos decryption key](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account) of the `AZUREADSSOACC` computer account at least every 30 days.
 
 ### How does sign-in with Seamless SSO work?
 
